@@ -11,10 +11,18 @@ const apiKey = '9812f495c39edfda37f91527ab04b2e4';
 // api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
 
 // Event listener to add function to existing HTML DOM element
+document.getElementById('generate').addEventListener('click', performAction);
 
-/* Function called by event listener */
+// Function called by event listener
+function performAction(event){
+    event.preventDefault();
+    const zip = document.getElementById('zip').value;
+    const feelings = document.getElementById('feelings').value;
 
-/* Function to GET Web API Data*/
+    getWeatherData(baseURL, zip, apiKey)
+}
+
+// Function to GET Web API Data
 const getWeatherData = async (baseURL, zip, apiKey) => {
     const response = await fetch(baseURL + zip + apiKey);
     try{
