@@ -29,11 +29,15 @@ const server = app.listen(port, listening);
 function listening(){
     console.log('Server is Running!');
     console.log(port);
-    console.log(server);
+    // console.log(server);
 }
 
 // Initialize all route with a callback function
 
-// Callback function to complete GET '/all'
+// Get Route
+app.get('/all', sendData);
+function sendData(request, response){
+    response.send(projectData);
+};
 
 // Post Route
