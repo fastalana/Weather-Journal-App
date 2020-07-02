@@ -15,6 +15,15 @@ const apiKey = '9812f495c39edfda37f91527ab04b2e4';
 /* Function called by event listener */
 
 /* Function to GET Web API Data*/
+const getWeatherData = async (baseURL, zip, apiKey) => {
+    const response = await fetch(baseURL + zip + apiKey);
+    try{
+        const data = await response.json();
+        return data;
+    } catch(error){
+        console.log("error", error);
+    }
+}
 
 /* Function to POST data */
 
