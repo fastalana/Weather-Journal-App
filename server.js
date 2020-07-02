@@ -32,12 +32,18 @@ function listening(){
     // console.log(server);
 }
 
-// Initialize all route with a callback function
-
-// Get Route
+// Get Route, returns projectData to the server code
 app.get('/all', sendData);
 function sendData(request, response){
     response.send(projectData);
 };
 
-// Post Route
+// Post Route, adds incoming data to projectData
+app.post('/add', callback);
+
+function callback(request, response){
+    projectData['temperature'] = request.body.temperature;
+    projectData['date'] = request.body.date;
+    projectData['content'] = request.body.content;
+    response.send(projectData);    
+}
