@@ -28,12 +28,33 @@ const getWeatherData = async (baseURL, zip, apiKey) => {
     try{
         const data = await response.json();
         return data;
-    } catch(error){
-        console.log("error", error);
+    } 
+    catch(error){
+        console.log('error', error);
     }
 }
 
 /* Function to POST data */
-
+const postWeatherData = async(url = '', data = {})=>{
+    const request = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/JSON'
+        },
+        body: JSON.stringify({
+            temperature: data.temperature,
+            date: data.date,
+            content: data.content
+        })
+    })
+    try{
+        const newData = await require.json();
+        return newData;
+    } 
+    catch(error){
+        console.log('error', error);
+    }
+};
 
 /* Function to GET Project Data */
