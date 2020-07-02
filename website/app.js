@@ -20,6 +20,9 @@ function performAction(event){
     const feelings = document.getElementById('feelings').value;
 
     getWeatherData(baseURL, zip, apiKey)
+        .then(function(data){
+            postWeatherData('/add', {temperature: data.main.temperature, date: newDate, content})
+        })
 }
 
 // Function to GET Web API Data
