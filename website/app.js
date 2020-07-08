@@ -8,8 +8,8 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 const baseURL = 'api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '&appid=9812f495c39edfda37f91527ab04b2e4';
 // Sample API call:
-// api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
-// http://api.openweathermap.org/data/2.5/weather?zip=11355,us&appid=9812f495c39edfda37f91527ab04b2e4
+// api.openweathermap.org/data/2.5/weather?zip={zip code}&appid={your api key}
+// http://api.openweathermap.org/data/2.5/weather?zip=11355&appid=9812f495c39edfda37f91527ab04b2e4
 
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', performAction);
