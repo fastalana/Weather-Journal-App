@@ -6,8 +6,7 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
 const baseURL = 'api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '9812f495c39edfda37f91527ab04b2e4';
-const countryCode = ',us&appid=';
+const apiKey = '&appid=9812f495c39edfda37f91527ab04b2e4';
 // Sample API call:
 // api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
 // http://api.openweathermap.org/data/2.5/weather?zip=11355,us&appid=9812f495c39edfda37f91527ab04b2e4
@@ -29,7 +28,7 @@ function performAction(event){
 
 // Function to GET Web API Data
 const getWeatherData = async (baseURL, zip, apiKey) => {
-    const response = await fetch(baseURL + zip + countryCode + apiKey);
+    const response = await fetch(baseURL + zip + apiKey);
     try{
         const data = await response.json();
         return data;
