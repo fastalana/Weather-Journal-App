@@ -21,9 +21,13 @@ function performAction(event){
     const feelings = document.getElementById('feelings').value;
 
     getWeatherData(baseURL, zip, apiKey)
-        // .then(function(data){
-        //     postWeatherData('/add', {temperature: data.main.temperature, date: newDate, content})
-        // })
+        .then(function(data){
+            postWeatherData('/add', {temperature: data.main.temperature, date: newDate, content})
+        })
+        .then(function (newData){
+            updateClient()
+        })
+    form.reset();
 }
 
 // Function to GET Web API Data
@@ -61,4 +65,15 @@ const postWeatherData = async(url = '', data = {})=>{
     }
 };
 
-/* Function to GET Project Data */
+const updateClient = async () => {
+    const request = await fetch('/all');
+    try{
+        const allData = await request.json()
+        document.getElementById('date').innerHTML = allData.date;
+        document.getElementById('temperature').innerHTML = allData.temperature;
+        document.getElementById('content').innerHTML = allData.content;
+    }
+    catch (error) {
+        console.log("error", error);
+    }
+};
