@@ -1,27 +1,20 @@
 body{
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
 }
 
 .holder{
-
+ 
 }
 
 .entry{
-    background: rgba(59, 74, 107, .4);
+    /* border: 1px solid red; */
 }
 
 #entryHolder{
@@ -41,7 +34,11 @@ body{
 }
 
 .headline {
-
+    text-align: center;
+    font-size: 48px;
+    letter-spacing: -3.75px;
+    font-weight: normal;
+    margin-top: 30px;
 }
 .title{
 
@@ -57,32 +54,31 @@ input{
     display:block;
     height: 60px;
     width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
 }
 
 button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid black;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 21px;
+    letter-spacing: -0.84px;
+    width: 150px;
+    height: 50px;
 }
+button:hover{
+    font-style: italic;
+    color: #a1a1a1;
+}
+
 h1{
     font-size: 36px;
 }
 
 textarea{
-    background:#22b2da;
-    color: #f0d43a;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+
 }
 /* Reset style for HTML element on active to have no border*/
 input:focus,
@@ -93,19 +89,8 @@ button:focus {
 }
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    color: #a1a1a1
 
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
+}
