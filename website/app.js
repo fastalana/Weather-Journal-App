@@ -5,11 +5,11 @@ let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
-const baseURL = 'api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '&appid=9812f495c39edfda37f91527ab04b2e4';
+const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
+const apiKey = '&appid=9812f495c39edfda37f91527ab04b2e4&units=imperial';
 // Sample API call:
-// api.openweathermap.org/data/2.5/weather?zip={zip code}&appid={your api key}
-// http://api.openweathermap.org/data/2.5/weather?zip=11355&appid=9812f495c39edfda37f91527ab04b2e4
+// api.openweathermap.org/data/2.5/weather?zip={zip code}&appid={your api key}&units=imperial
+// http://api.openweathermap.org/data/2.5/weather?zip=11355&appid=9812f495c39edfda37f91527ab04b2e4&units=imperial
 
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', performAction);
@@ -18,16 +18,17 @@ document.getElementById('generate').addEventListener('click', performAction);
 function performAction(event){
     event.preventDefault();
     const zip = document.getElementById('zip').value;
-    const feelings = document.getElementById('feelings').value;
+    const content = document.getElementById('feelings').value;
 
     getWeatherData(baseURL, zip, apiKey)
         .then(function(data){
-            postWeatherData('/add', {temperature: data.main.temperature, date: newDate, content})
+            // console.log(data.content)
+            postWeatherData('/add', {temperature: data.main.temp, date: newDate, content})
         })
         .then(function (newData){
             updateClient()
         })
-    form.reset();
+    // form.reset();
 }
 
 // Function to GET Web API Data
@@ -35,6 +36,7 @@ const getWeatherData = async (baseURL, zip, apiKey) => {
     const response = await fetch(baseURL + zip + apiKey);
     try{
         const data = await response.json();
+        // console.log(data.main.temp);
         return data;
     } 
     catch(error){
@@ -57,7 +59,7 @@ const postWeatherData = async(url = '', data = {})=>{
         })
     })
     try{
-        const newData = await require.json();
+        const newData = await request.json();
         return newData;
     } 
     catch(error){
@@ -69,9 +71,10 @@ const updateClient = async () => {
     const request = await fetch('/all');
     try{
         const allData = await request.json()
-        document.getElementById('date').innerHTML = allData.date;
-        document.getElementById('temperature').innerHTML = allData.temperature;
-        document.getElementById('content').innerHTML = allData.content;
+        console.log(allData.content);
+        document.getElementById('date').innerHTML = "On " + allData.date;
+        document.getElementById('temp').innerHTML = "the temperature was " + allData.temperature + " degrees, ";
+        document.getElementById('content').innerHTML = "and you felt " + allData.content + ".";
     }
     catch (error) {
         console.log("error", error);
