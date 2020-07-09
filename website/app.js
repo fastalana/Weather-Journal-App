@@ -28,7 +28,6 @@ function performAction(event){
         .then(function (newData){
             updateClient()
         })
-    // form.reset();
 }
 
 // Function to GET Web API Data
